@@ -86,7 +86,7 @@ public class LocationManager extends CordovaPlugin implements BeaconConsumer {
     private static final boolean DEFAULT_ENABLE_ARMA_FILTER = false;
     private static final String REQUEST_BT_PERMISSION_NAME = "com.unarin.cordova.beacon.android.altbeacon.RequestBtPermission";
     private static final boolean DEFAULT_REQUEST_BT_PERMISSION = true;
-    private static final int DEFAULT_FOREGROUND_SCAN_PERIOD = 1100;
+    private static final int DEFAULT_FOREGROUND_SCAN_PERIOD = 200;
     private static int CDV_LOCATION_MANAGER_DOM_DELEGATE_TIMEOUT = 30;
     private static final int BUILD_VERSION_CODES_M = 23;
 
