@@ -39,7 +39,7 @@
 ### Installation
 
 ```
-cordova plugin add https://github.com/petermetz/cordova-plugin-ibeacon.git
+cordova plugin add https://github.com/f4b10goncalves/cordova-plugin-ibeacon.git
 ```
 
 ### Usage
