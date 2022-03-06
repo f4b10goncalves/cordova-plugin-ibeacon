@@ -86,7 +86,7 @@ public class LocationManager extends CordovaPlugin implements BeaconConsumer {
     private static final boolean DEFAULT_ENABLE_ARMA_FILTER = false;
     private static final String REQUEST_BT_PERMISSION_NAME = "com.unarin.cordova.beacon.android.altbeacon.RequestBtPermission";
     private static final boolean DEFAULT_REQUEST_BT_PERMISSION = true;
-    private static final int DEFAULT_FOREGROUND_SCAN_PERIOD = 200;
+    private static final int DEFAULT_FOREGROUND_SCAN_PERIOD = 240;
     private static int CDV_LOCATION_MANAGER_DOM_DELEGATE_TIMEOUT = 30;
     private static final int BUILD_VERSION_CODES_M = 23;
 
@@ -294,6 +294,8 @@ public class LocationManager extends CordovaPlugin implements BeaconConsumer {
             return;
         }
 
+        /* don't display popup to ask for location permission
+
         try {
 
             final Integer permissionCheckResult = (Integer) checkSelfPermissionMethod.invoke(
@@ -347,6 +349,7 @@ public class LocationManager extends CordovaPlugin implements BeaconConsumer {
         } catch (final InvocationTargetException e) {
             Log.w(TAG, "InvocationTargetException while checking for ACCESS_COARSE_LOCATION:", e);
         }
+        */
     }
 
     private Method getCheckSelfPermissionMethod() {
@@ -1422,6 +1425,12 @@ public class LocationManager extends CordovaPlugin implements BeaconConsumer {
         // accuracy = rough distance estimate limited to two decimal places (in metres)
         // NO NOT ASSUME THIS IS ACCURATE - it is effected by radio interference and obstacles
         dict.put("accuracy", Math.round(region.getDistance() * 100.0) / 100.0);
+
+        // MAC address
+        dict.put("address", region.getBluetoothAddress());
+
+        // iBeacon name
+        dict.put("name", region.getBluetoothName());
 
         return dict;
     }
